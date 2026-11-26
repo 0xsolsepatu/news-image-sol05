@@ -230,7 +230,7 @@ What was verified WITHOUT exec (all by hand, from the file text):
 
 ---
 
-# BUILD v3 — "Atlas Ledger" rebuild (27 Nov 2026 ~04:30–05:35 WIB)
+# BUILD v3 — "Atlas Ledger" rebuild (27 Nov 2026 ~04:30–06:35 WIB)
 
 Rebuild of v2 (live rank 5350/7124, judge 925930, W5-L3-D4 — WORSE than v1's
 957712, W10-D1-L1) against the live top-10 pattern read 27 Nov ~04:35 WIB:
