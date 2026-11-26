@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Atlas Ledger — hand the finished 26 November front page to the grader.
 
-The picture is drawn beforehand by render.py (see BUILD.md for the 44
+The picture is drawn beforehand by render.py (see BUILD.md for the 40
 verified stories and the newspaper design). This program has one job:
 carry entry.png, which sits next to it, into the directory the grader
 names, byte for byte, after proving the file really is the PNG it claims

@@ -1,0 +1,59 @@
+You are reviewing the FINISHED v3 build of a newspaper front-page image entry for the make.fun competition news-image-20261126 ("Sum up 26 November's world news in one image", 1024x1024 PNG). You gave a CONDITIONAL GO on the design; all three conditions were applied. Answer GO or NO-GO with concrete reasons, and list any factual error you can spot. Do not invent facts; if you state a fact, say which source it comes from. Keep the reply under 1000 words.
+
+WHAT WAS BUILT (v3, "Atlas Ledger"):
+- 40 verified stories: 14 pure 26 Nov, 26 flagged [25 Nov] with a dark pill. 3 illustrated leads, 10 grid cards with drawn scenes (13 scenes total), 12-pin world map, 10-tick UTC timeline, DATE CHECK box, 6-stat strip, footer "40 STORIES - 12 REGIONS - 13 SCENES".
+- Changes vs v2 (which ranked 5350/7124, judge 925930): dropped 4 minor [25 Nov] stories (Iowa explosives, Swiss envoy, Poundland, Flipkart); re-tagged Luma ruling and Hasakah attack to [25 Nov] (both were 25 Nov events misdated as pure in v2); chess updated to the real Game 3 result (draw, 60 moves, 1.5-1.5, Chess.com/ChessBase); tail 31->27 items, rows 26->32px, headlines 11->12pt, decks 10->11pt; grid decks changed from faded grey to ink for contrast; storm-cloud art fixed so it no longer crosses the panel border into the stat strip; timeline now Wed 13:30 PCE / 13:42 GDP / 17:30 Hera / 22:04 Luma ruling, Thu 00:00 Sanaa / 02:03 Kim / 05:14 mine toll / 05:44 EU leaders / 12:00 Tube strike / 14:00 Game 3.
+- Sources re-verified 27 Nov by second source: EU loan REUTERS, Kim REUTERS (KCNA via Reuters), Spain REUTERS, Zambia AL JAZEERA, Riyadh AL JAZEERA, Hasakah AL JAZEERA, Luma AP.
+
+VERIFICATION DONE (all deterministic, by the builder):
+- Rendered twice: byte-identical, sha256 d182642a6e1bc0f06731153fd1343177f71249666ef8e5bc3a5d1e8c253ac800, 1024x1024, 226,944 bytes (< 1 MiB).
+- Renderer audit: ISSUES: 0 (no overflow, no headline/deck too long; 13 length issues found in the first render were fixed by shortening 10 headlines/decks, all kept verbatim in RESEARCH.md).
+- Scripted cross-check: all 40 headlines + 40 decks verbatim per story number against RESEARCH.md v3, 0 failures; pure set {1,4,5,6,7,8,14,15,16,17,18,19,20,21} and flagged set match RESEARCH.md; CLAIM pill only on story 29 (Ras Tanura); leads+grid+tail cover stories 1-40 exactly once.
+- Visual read at 1024px: masthead, date, all 6 stat numbers, all 3 lead headlines legible; no overlaps; no text past edges; map pins + legend + date check + footer legible.
+- Visual read at 300px downscale: masthead, date, all 6 stat numbers, all 3 lead headlines legible; dark [25 Nov] pills read as clear markers; tail rows legible as text lines. PASS.
+
+STORY LIST (headline — deck — source — pure/flagged):
+1 Thanksgiving storm slams US East Coast — 250m in path; Macy's parade postponed to Saturday, a first in its history. — FOX WEATHER — pure
+2 US unveils new tariffs on China, EU — Trump team proposes 20% on China, 15% on EU; 14 partners hit, UK escapes. — REUTERS — 25 Nov
+3 US economy grows 4.3%, fastest in 3 years — Q3 growth revised up from 3.4%; investment and spending beat forecasts. — BEA — 25 Nov
+4 EU leaders clash over 45bn euro Ukraine loan — Brussels summit splits over loan and 2028-34 budget. — REUTERS — pure
+5 Kim urges wider tactical nuclear rollout — KCNA: nukes 'absolutely inviolable'; output expanding. — REUTERS — pure
+6 Tube strike halts London from midday — Circle, Piccadilly shut all day; no trains after 9pm. — THE TIMES — pure
+7 UK-EU treaties carry 10-year exit clause — Quitting early means paying to rebuild border checks. — BBC — pure
+8 One firm's boats in third of crossings — BBC: MaReBoote kit in 29% of Channel trips in 2026. — BBC — pure
+9 FCC clears 1m SpaceX data satellites — Starmind orbital AI centres approved; launch by 2033. — REUTERS — 25 Nov
+10 US inflation hits 3.8% in October — PCE up 0.3% in month; core 3.3% lifts Fed hike bets. — REUTERS — 25 Nov
+11 Asteroid's crash scar seen up close at last — Hera shows Dimorphos flattened, tumbling amid boulders. — REUTERS — 25 Nov
+12 Ramaphosa wins court fight on Farmgate — High Court scraps 2022 panel report; impeachment ends. — REUTERS — 25 Nov
+13 76 hostages freed in Colombia supermarket — Police storm Cartagena store after 17-hour siege. — BBC — 25 Nov
+14 India's 77th Constitution Day — Nation honours 1949 charter, 18th year since 26/11. — OBSERVERVOICE — pure
+15 Chess title level at 1.5-1.5 — Game 3 drawn in 60 moves; Gukesh holds Sindarov. — CHESS.COM — pure
+16 Alcohol harms 3.2m women — AIHW: harm surged since 2022-23; 26% drink riskily. — AIHW — pure
+17 Spain heads to snap vote Sunday — Sanchez faces PP challenge; Vox may hold balance. — REUTERS — pure
+18 Zambia bans term-limit protest — Police cite clash risk as MPs push to scrap term caps. — AL JAZEERA — pure
+19 Saudi downs Houthi missiles — Blast hits Sanaa as coalition intercepts drones too. — AL JAZEERA — pure
+20 Indonesia mine toll climbs to 13 — 13 trapped in flooded Bogor pit; rain halts search. — REUTERS — pure
+21 Tai Po fire remembered, a year on — 168 died in 2025 blaze; tributes at Wang Fuk Court. — HKFP — pure
+22 Puerto Rico axes Luma deal — Court 5-4 cancels Luma deal; successor sought. — AP — 25 Nov
+23 ISIL attack kills 2 in Hasakah — Suicide blast at checkpoint; 5 hurt, 4 attackers dead. — AL JAZEERA — 25 Nov
+24 Israel kills Hamas security chief — Strike kills Col. Abuelouf, wife and two daughters. — REUTERS — 25 Nov
+25 RSF drones kill 19 in Sudan — Rights group: strikes hit Damazin homes; 20 hurt. — REUTERS — 25 Nov
+26 Ukraine hits 5 Russian jets — Kyiv says 3 MiG-31s and 2 Su-34s knocked out. — REUTERS — 25 Nov
+27 Bangladesh garment pay up 36% — Pay up to 17,000 taka ($136); workers wanted more. — REUTERS — 25 Nov
+28 Malaysia sues Google for $146m — 74,703 harmful reports cited, mostly online gambling. — REUTERS — 25 Nov
+29 Houthi claim on refinery — Riyadh: 4 drones downed; NASA images show smoke. — REUTERS — 25 Nov, CLAIM
+30 6 die in Cessna Gulf crash — Bodies in fuselage off Mississippi; NTSB probes. — AP — 25 Nov
+31 Cairo tanker fire kills 31 — Tanker overturns in Warraq; 31 dead, 21 hurt. — REUTERS — 25 Nov
+32 Judges: drop Netanyahu case — Court: conviction in Case 4000 unlikely, judges say. — REUTERS — 25 Nov
+33 US jobless claims fall to 189,000 — Claims drop 13,000 to 189,000, beating forecasts. — REUTERS — 25 Nov
+34 Wall St rebounds after plunge — Dow +0.33%, Nasdaq -0.62%; Nvidia -3.9%. — REUTERS — 25 Nov
+35 Liverpool cruise, United held — Isak nets twice in 3-0 win; Lille stun Bayern 2-1. — UEFA — 25 Nov
+36 Asia stocks slump on AI rout — KOSPI -6.2%, Nikkei -2.8%; Taiwan fell up to 8.6%. — REUTERS — 25 Nov
+37 Judge blocks birthright curbs — Judge Cooper blocks Trump order; 2nd judge to do so. — REUTERS — 25 Nov
+38 Cult leader convicted again — Mackenzie guilty of child cruelty in Shakahola case. — REUTERS — 25 Nov
+39 Record 2,100 reach Canaries — Record day as 15 boats reach El Hierro in 24 hours. — REUTERS — 25 Nov
+40 Duran Duran's Taylor dies at 65 — Died of prostate cancer on Monday, band confirms. — REUTERS — 25 Nov
+
+DATE CHECK box on the image: "Masthead date: Thursday 26 November 2026. 26 of the 40 stories stem from Wed 25 Nov; each is flagged [25 Nov] where it appears. 14 stories are pure 26 Nov. Rejected as not 26 Nov: Miss Universe (24 Nov), NZ-India Test draw (23 Nov), Nepal quake (24 Nov), COP31 ended (22 Nov), Shenzhou-24 - in the 25 Nov image."
+
+QUESTIONS: (a) Any factual error in the 40 stories, the stats, the timeline, or the date check? (b) Are the three design-review conditions visibly met? (c) Anything in this build that would plausibly lose a pairwise match against a top-10 entry (36-40 stories, 13 scenes, map, timeline, date check)? (d) Verdict: GO or NO-GO?

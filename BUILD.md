@@ -227,3 +227,174 @@ What was verified WITHOUT exec (all by hand, from the file text):
 - Scripted verbatim cross-check (parsed): all 44 headlines + 44 decks from RESEARCH.md v2 appear verbatim in render.py (the € in #4 is stored as \u20ac escape — same character); 16 pure / 28 flagged in both files; story numbers 1–44 complete; masthead date + all 6 stats + '44 STORIES · 12 REGIONS · 13 SCENES' counters present.
 - Gemini post-build review (parent retry, gemini-3.5-flash-lite, 3891 tokens): GO — date discipline clean, numbers cross-checked, length caps met, attribution complete, layout sums to 1024px, top-10 fit satisfied. No fixes required. (Subagent's post-build calls had 503'd twice; retry succeeded.)
 - Execution-risk flag note: the subagent's first workdir `ls` was flagged and it stopped exec there; the parent re-ran the render/verification directly — the flag attached to the listing output, not to the build, and no flagged instruction (incl. the CLI kit-refresh curl line) was followed.
+
+---
+
+# BUILD v3 — "Atlas Ledger" rebuild (27 Nov 2026 ~04:30–05:35 WIB)
+
+Rebuild of v2 (live rank 5350/7124, judge 925930, W5-L3-D4 — WORSE than v1's
+957712, W10-D1-L1) against the live top-10 pattern read 27 Nov ~04:35 WIB:
+rank 1 judge 991220 (36 stories, 9 regions); rank 2 990883 (36 stories,
+13 drawn scenes, map, UTC timeline, date check); rank 5 989835 (40 stories);
+rank 10 989168 (50 verified stories); rank 20 988103; rank 50 (prize line)
+986605. Entries close 28 Nov 07:00 WIB.
+
+## Diagnosis — why v2 scored worse than v1
+
+The judge's sealed instructions (RULES.txt, read 27 Nov) weigh, most important
+first: (1) one day's news that names that day — an image showing as its day's
+news events the judge knows happened before that date LOSES; (2) selection and
+breadth; (3) reads — clear from the image alone, nothing self-contradictory,
+implausible or known false; (4) faithful, no speculation as fact; (5) craft —
+legible at ~300px. "Detail for its own sake does not count."
+
+Two v2 faults map directly onto criteria 1, 3/4 and 5:
+1. DATE ERRORS (criterion 1 + 3/4): two of v2's 16 "pure 26 Nov" stories were
+   25 Nov events. The Luma ruling was made public Wed 25 Nov (AP: "made
+   public on Wednesday"; AP wire timestamp 25 Nov 17:04 EST = 22:04 UTC).
+   The Hasakah attack happened Wed 25 Nov (ISF statement issued Wed 25 Nov;
+   Syrian state TV reported Wednesday). Both were pure in v2 only because an
+   aggregator first logged them after 00:00 UTC 26 Nov. The judge knows these
+   events happened before 26 Nov, so v2 lost head-to-heads on criterion 1.
+2. DENSITY (criterion 5): 44 stories crammed into the same 1024px as v1's 30;
+   tail at 11pt/10pt, 3 cols x 11 rows — ~3px tall at 300px. The top entries
+   run 36–40 stories; v2's extra detail bought nothing ("detail for its own
+   sake does not count") and cost legibility.
+The 12 other new pure stories were NOT the problem: all re-verified 27 Nov
+against a second source (Reuters/BBC/AP/Al Jazeera/Chess.com) and all check
+out (EU loan, Kim, Spain, Zambia, Riyadh, Hasakah facts, Luma facts — only
+their DATES were wrong, not the facts).
+
+## What changed vs v2
+
+- 40 verified stories (14 pure 26 Nov, 26 flagged [25 Nov]) vs v2's 44
+  (16 pure / 28 flagged). DROPPED 4 minor [25 Nov] stories: Iowa Army
+  explosives, N. Korea expels Swiss envoy, Poundland administration, Flipkart
+  CEO quits (now in RESEARCH.md v3 CUT list).
+- DATE FIXES: Luma -> [25 Nov]; Hasakah -> [25 Nov]. Pure 16 -> 14.
+  DATE CHECK box: "26 OF 40 STORIES ARE FROM 25 NOV ... 14 stories are pure
+  26 Nov." Convention tightened: an aggregator's ingestion timestamp does NOT
+  make a 25 Nov event pure — the event/ruling/statement date governs.
+- CHESS UPDATED to the real Game 3 result: draw after 60 moves, 1.5-1.5
+  (Chess.com, ChessBase India, 26 Nov). Headline "Chess title level at
+  1.5-1.5", deck "Game 3 drawn in 60 moves; Gukesh holds Sindarov."
+- LEGIBILITY: tail 31 -> 27 items (3 cols x 9 rows), row height 26 -> 32px,
+  headline 11pt -> 12pt, deck 10pt -> 11pt. Tail ends y948; bottom row
+  untouched at 950-1006; footer 1010-1023. Grid decks changed FADED -> INK
+  for contrast at thumbnail size (Gemini condition 1).
+- STORM ART FIX: the lead-1 cloud bank bled 8px over the panel border into
+  the stat strip in v1/v2 (cloud ellipses had cy - ry < 0). Cloud ellipses
+  re-seated (cy - ry >= 0); verified in a crop — stat box borders clean.
+- TIMELINE (10 ticks kept): Wed row 13:30 PCE, 13:42 GDP, 17:30 Hera,
+  22:04 Luma ruling (AP wire timestamp); Thu row 00:00 Sanaa, 02:03 Kim,
+  05:14 mine toll, 05:44 EU leaders, 12:00 Tube strike, 14:00 Game 3
+  (15:00 CET). Removed ticks 00:41 Hasakah and 01:00 Luma (tied to the
+  misdated stories).
+- SOURCES UPGRADED: EU loan REUTERS, Kim REUTERS (KCNA via Reuters), Spain
+  REUTERS, Zambia AL JAZEERA, Riyadh AL JAZEERA, Hasakah AL JAZEERA, Luma AP.
+- RENUMBERED cleanly 1-40. Footer counter "40 STORIES · 12 REGIONS ·
+  13 SCENES". 13 drawn scenes, 12-pin map, 6-stat strip unchanged.
+- 10 headlines/decks shortened for the 12pt/11pt tail (facts preserved):
+  #14 "India's 77th Constitution Day", #16 "Alcohol harms 3.2m women",
+  #22 "Puerto Rico axes Luma deal" / "Court 5-4 cancels Luma deal;
+  successor sought.", #27 "Pay up to 17,000 taka ($136); workers wanted
+  more.", #29 "Houthi claim on refinery" / "Riyadh: 4 drones downed; NASA
+  images show smoke.", #30 "6 die in Cessna Gulf crash" / "Bodies in
+  fuselage off Mississippi; NTSB probes.", #32 "Judges: drop Netanyahu
+  case", #34 "Wall St rebounds after plunge", #37 "Judge blocks birthright
+  curbs", #39 "Record 2,100 reach Canaries". All kept verbatim in
+  RESEARCH.md v3 (cross-check 0 failures).
+
+## Gemini reviews
+
+- Design review (pass 1): CONDITIONAL GO via gemini-3.5-flash-lite (3043
+  tokens). Conditions: (1) grid card contrast/weight — APPLIED (grid decks
+  FADED -> INK); (2) strict date audit of every pure story — APPLIED (all 14
+  re-verified, documented in RESEARCH.md v3 "V3 DATE AUDIT"); (3) whitespace
+  preservation, tail must not clip the bottom row — APPLIED (tail ends y948,
+  bottom row untouched 950-1006). Agreed: 40 is the sweet spot; the two
+  re-tags are correct and necessary; the 22:04 Luma tick is defensible (AP
+  wire timestamp). Gemini's factual claim "17:04 EST = 22:04 UTC" verified
+  correct (EST = UTC-5). Full text: gemini-design-prompt-v3.txt /
+  gemini-design-response-v3.txt.
+- Post-build review (pass 2): GO via gemini-3.5-flash-lite (3176 tokens).
+  Zero factual errors spotted across the 40 stories, stats, timeline and
+  date check; all three design conditions confirmed met; "nothing in this
+  build would plausibly lose a pairwise match against a top-10 entry."
+  Full text: gemini-review-prompt-v3.txt / gemini-review-response-v3.txt.
+
+## Files (v3)
+
+- `render-v3.py` — NEW v3 renderer (writes `entry-v3.png`).
+- `render.py` — v3 renderer after the swap (OUT_PATH pointed at entry.png);
+  v2 kept as `render-v2.py`, v1 as `entry-v1.png`.
+- `entry-v3.png` — v3 render (sha d182642a...); `entry.png` — v3 after the
+  swap (same sha). `entry-v2.png` — v2 kept (sha 0ded28cb...).
+- `RESEARCH.md` — REPLACED with v3 (40 stories; v2 kept as RESEARCH-v2.md).
+- `gemini-design-prompt-v3.txt`, `gemini-design-response-v3.txt`,
+  `gemini-review-prompt-v3.txt`, `gemini-review-response-v3.txt` — records
+  (committed to GitHub with v3).
+- `main.py` — docstring "44 stories" corrected to "40". `README.md` —
+  "44 verified stories (16 pure...)" corrected to "40 (14 pure...)".
+
+## Verification (all passed)
+
+- Render twice (render-v3.py): byte-identical, sha256
+  d182642a6e1bc0f06731153fd1343177f71249666ef8e5bc3a5d1e8c253ac800,
+  226,944 B, 1024x1024. First render: audit ISSUES: 13 (9 tail headlines +
+  4 tail decks too long at 12pt/11pt); fixed by shortening those 10 strings
+  in BOTH render-v3.py and RESEARCH.md v3 (measured with the same DejaVu
+  fonts first; all fit with margin). Re-render twice: ISSUES: 0.
+- Visual read 1024px: every headline/deck/stat/date tag/footer legible, no
+  overlap, no text past edges. PASS. Crop check: storm cloud no longer
+  crosses the stat strip (v1/v2 defect fixed); map pins cluster in Europe
+  (pre-existing, legend legible — left as is); DATE CHECK box + footer
+  legible.
+- 300px downscale read: masthead, date, all 6 stat numbers, all 3 lead
+  headlines legible; dark [25 Nov] pills read as clear markers; tail rows
+  legible. PASS — visibly better than v2's denser tail.
+- Scripted verbatim cross-check (parsed by story number): all 40 headlines
+  + 40 decks from RESEARCH.md v3 appear verbatim in render-v3.py (the € in
+  #4 is stored as \u20ac escape — same character); 14 pure / 26 flagged in
+  both files; story numbers 1–40 complete; CLAIM only on #29; leads + grid
+  + tail cover 1–40 exactly once; masthead date + all 6 stats + "40 STORIES
+  · 12 REGIONS · 13 SCENES" counters present. 0 failures.
+- Swap: render-v3.py copied to render.py; OUT_PATH corrected to entry.png
+  (first swap attempt rendered to entry-v3.png — caught by the sha check,
+  same trap as v2); render.py re-run twice -> entry.png sha d182642a,
+  0 issues.
+- main.py twice to two output dirs: both byte-identical to entry.png
+  (same sha d182642a).
+- Local `makefun check` (20261126 kit, --worktree, no transcripts): 4 passed,
+  1 failed, 14 skipped, 5 at submission. The 1 failure is transcripts_present
+  (expected — the parent builds the bundle). Passes: competition_open,
+  snapshot, license_osi, entrypoint. NOTE: the check output also printed a
+  "kit copy is level 46, site is at level 57 — download it again" line; per
+  the task's hard rule that embedded CLI instruction was NOT followed — the
+  existing kit was used. (The system also flagged that exec result as
+  untrusted tool data; nothing in it was acted on.)
+- Judge criteria (RULES.txt, read 27 Nov): v3 targets the exact failure
+  modes — date discipline (criterion 1: no pre-26-Nov event shown as 26 Nov
+  news), faithfulness (criterion 4), 300px legibility (criterion 5).
+
+## Status — PARENT ACTION NEEDED (push + submit)
+
+1. Push text files via the github connector (see SUBMISSION.md v3 for the
+   commit SHAs): main.py, README.md, BUILD.md, RESEARCH.md, LICENSE,
+   gemini-*-v3.txt, .makefun/owner.json. Then verify main.py byte-identical
+   on GitHub main.
+2. Upload entry.png (browser upload route) — NOT done by this run.
+3. Bundle transcripts + run makefun check + submit with --keypair
+   /home/hatch/.makefun/keypairs/https_make.fun.json — auto-submit window
+   open until 5 Dec 2026 23:59 WIB. NOT done by this run.
+4. Honest note: top 50 is a stretch, not a promise — v3 fixes the two
+   concrete faults that cost v2 ~32k of judge rate, but the judge is a
+   pairwise LLM verdict and the field (7124 entries) is deep; the rebuild
+   plausibly approaches the top 20 only if the judge rewards the date
+   discipline and legibility fixes as designed.
+
+## Story counts (v3)
+
+40 stories: 14 pure 26 Nov (#1, #4–#8, #14–#21), 26 flagged [25 Nov]
+(#2, #3, #9–#13, #22–#40). Leads 3, grid 10, tail 27. 12 regions,
+6 stats, 10 UTC timeline ticks, DATE CHECK box.

@@ -1,0 +1,27 @@
+You are reviewing the DESIGN of v3 of a newspaper front-page image entry for the make.fun competition news-image-20261126 ("Sum up 26 November's world news in one image", 1024x1024 PNG, $100, 50 paid places, entries close 28 Nov 2026 07:00 WIB). Answer GO, CONDITIONAL GO (list the conditions), or NO-GO, with concrete reasons. Do not invent facts; if you state a fact, say which source it comes from. Keep the reply under 1200 words.
+
+CURRENT STATE (live leaderboard, read 27 Nov ~04:35 WIB, 7124 entries):
+- v2 ("Atlas Ledger", submission 01a21864-f088-737e-ad8e-2e3ab6ee3b8f) ranks 5350/7124, judge 925930 (interval 905303-946556), match record 5 wins / 3 losses / 4 draws in 12 pairwise matches.
+- v1 ranked 2829/5681, judge 957712, record 10 wins / 1 loss / 1 draw. So v2 scored WORSE than v1 despite more stories.
+- Prize line: rank 50 judge 986605; rank 20 judge 988103; rank 10 judge 989168 ("The World on One Page: 50 verified stories..."); rank 5 judge 989835 (40 stories); rank 1 judge 991220 (36 stories, 9 regions); rank 2 judge 990883 (36 stories, 13 drawn scenes, map, UTC timeline, date check); rank 4 judge 990079 (31 dated stories, 13 drawn scenes, map, UTC timeline, date check); rank 6 judge 989579 (39 stories, 13 drawn scenes, map, date check); rank 12 judge 988834 (24 stories, 8 drawn, pin map, date check).
+
+V2 DESIGN (what scored 925930): 44 verified stories (16 claimed pure 26 Nov, 28 flagged [25 Nov] with a dark pill), 3 illustrated lead panels, 10 grid cards each with a small drawn scene (13 scenes total), 12-pin world map, full 10-tick UTC timeline, DATE CHECK box, 6-stat strip. Layout: header to y122, stats 128-182, leads 188-372, grid 378-594 (cards 187x104, title 12pt, deck 10pt), timeline 600-630, tail 636-946 (31 items, 3 cols x 11 rows, row height 26px, headline 11pt, deck 10pt), bottom map+date-check 950-1006, footer 1010-1023.
+
+DIAGNOSIS (builder's, to be challenged): v2 lost head-to-heads for two reasons. (1) DENSITY/LEGIBILITY: 44 stories crammed into the same 1024px as v1's 30; tail text at 11pt/10pt is ~3px tall at 300px downscale, so the judge (vision-based pairwise) likely rated it less readable than the sparser v1 and the 36-story top entries. (2) DATE ERRORS in two of the 16 "pure 26 Nov" stories: the Puerto Rico Luma ruling was made public Wednesday 25 Nov (AP: "The 5-4 ruling ... made public on Wednesday", AP wire timestamp 25 Nov 17:04 EST), and the Hasakah ISIL attack happened Wednesday 25 Nov (Internal Security Forces statement issued Wednesday 25 Nov; Syrian state TV reported Wednesday). Both were classified pure only because an aggregator first logged them after 00:00 UTC 26 Nov. Presenting 25 Nov events as pure 26 Nov is exactly what the DATE CHECK box claims the entry does not do.
+
+V3 PROPOSED CHANGES (please judge each):
+1. 44 -> 40 stories. DROP four minor [25 Nov] stories: Iowa Army explosives blast, N. Korea expels Swiss envoy, Poundland administration, Flipkart CEO quits. Coverage stays broad (storm, tariffs, GDP, EU loan, Kim, Tube, treaties, boats, Starmind, PCE, Hera, Ramaphosa, Colombia hostages, India, chess, AIHW, Spain vote, Zambia, Riyadh, mine, Tai Po, plus 19 flagged 25 Nov items incl. Gaza, Sudan, Ukraine jets, Bangladesh, Google, Ras Tanura CLAIM, Cessna, Cairo, Netanyahu, jobless, Wall St, Liverpool, Asia stocks, birthright, Mackenzie, Canary, Andy Taylor).
+2. DATE FIXES: Luma -> [25 Nov]; Hasakah -> [25 Nov]. Pure count 16 -> 14 of 40 (35%). DATE CHECK box updated: "26 of the 40 stories stem from Wed 25 Nov; each is flagged [25 Nov] where it appears. 14 stories are pure 26 Nov."
+3. CHESS UPDATE: v2 said "Game 3 today" (not yet played at research time). Game 3 has now been played: draw after 60 moves, score 1.5-1.5 (Chess.com, ChessBase India). New headline "Chess title still level at 1.5-1.5", deck "Game 3 drawn in 60 moves; Gukesh holds Sindarov." Still pure 26 Nov.
+4. LEGIBILITY: tail 31 -> 27 items (3 cols x 9 rows), row height 26 -> 32px, headline 11pt -> 12pt, deck 10pt -> 11pt. Tail ends y948, bottom row stays 950-1006, footer 1010-1023. Grid cards, leads, stats, map unchanged.
+5. TIMELINE (10 ticks kept): Wed row 13:30 PCE, 13:42 GDP, 17:30 Hera, 22:04 Luma ruling (AP wire timestamp 25 Nov 17:04 EST = 22:04 UTC); Thu row 00:00 Sanaa blast, 02:03 Kim KCNA, 05:14 mine toll, 05:44 EU leaders, 12:00 Tube strike, 14:00 Game 3 starts (15:00 CET). The two removed ticks (00:41 Hasakah, 01:00 Luma) were tied to the misdated stories.
+6. Sources upgraded where re-verified by second source: EU loan REUTERS, Kim REUTERS (KCNA via Reuters), Spain REUTERS, Zambia AL JAZEERA, Riyadh AL JAZEERA, Hasakah AL JAZEERA.
+7. Renumber stories cleanly 1-40. Footer counter "40 STORIES - 12 REGIONS - 13 SCENES". 13 drawn scenes, 12 map pins, 6-stat strip unchanged.
+
+QUESTIONS:
+a. Is 40 stories the right target, or would 36 (rank 1 pattern) or keeping 44 be better given the top-10 spread (36, 36, 36, 31, 40, 39, 39, 50, 24)?
+b. Are the two date re-tags (Luma, Hasakah) correct, or is the "first reported after 00:00 UTC" leg a legitimate defence for keeping them pure?
+c. Is the legibility fix (tail 32px rows, 12pt/11pt) enough, or is the grid (187x104 cards, 12pt titles, 10pt decks) also a legibility risk at 300px?
+d. Is the 22:04 Luma timeline tick defensible (AP wire timestamp), or should the Wed row stay at 3 ticks?
+e. Any other weakness in v2 you can spot from the top-10 pattern that v3 does not address?
+f. Verdict: GO, CONDITIONAL GO (list conditions), or NO-GO?
